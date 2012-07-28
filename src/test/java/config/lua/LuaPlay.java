@@ -1,6 +1,8 @@
 package config.lua;
 
+import com.google.common.base.Strings;
 import config.Configuration;
+import config.util.Resources;
 import org.luaj.vm2.LoadState;
 import org.luaj.vm2.LuaTable;
 import org.luaj.vm2.LuaValue;
@@ -46,5 +48,16 @@ public class LuaPlay {
 
     value = conf.get("t.bar.plus", null);
     LOGGER.info("Value of t.bar.plus {}", value);
+  }
+
+  public void luaWithAddedFunctions() {
+    LuaConfiguration conf = new LuaConfiguration();
+    conf.addResource("NetworkCall.lua");
+
+    for(String host : new String[] {"google", "yahoo"}) {
+      String data = conf.get(host, null);
+      int length = data.length();
+      LOGGER.info("{} Data {}[...]{}", new Object[] {host, data.substring(0, 20), data.substring(length - 20, length)});
+    }
   }
 }
