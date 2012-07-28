@@ -8,5 +8,120 @@ SPOILER:
 
 
 
-
-Lua comes out better than Apache Commons Configuration!
+$  for i in 10 100 1000 10000; do  mvn clean test -Dtest=config.SpeedTest -Dreps=$i -Dunit=MILLISECONDS | egrep -i "lua|commons|properties|SpeedTest" ; done;
+Running config.SpeedTest
+11:55:08.420 [main] INFO  config.SpeedTest - Configuration Init Time
+Lua Precompiled Java------------------------         0
+Lua Precompiled Java With Compiler----------         0
+Lua Precompiled with Functions--------------         0
+Lua Precompiled with Functions with Compiler         0
+Commons Config System-----------------------         3
+Lua Compile Java----------------------------         3
+Java Properties-----------------------------         4
+Lua Compile Java with Functions-------------         4
+Lua Precompiled Bytecode--------------------         4
+Lua Interpret with Functions----------------        22
+Commons Config XML--------------------------        57
+Commons Config Properties-------------------        82
+Lua Interpret-------------------------------       503
+11:55:08.434 [main] INFO  config.SpeedTest - Compute Time (reps 10)
+Commons Config System-----------------------         0
+Java Properties-----------------------------         0
+Lua Compile Java----------------------------         0
+Lua Compile Java with Functions-------------         0
+Lua Interpret-------------------------------         0
+Lua Interpret with Functions----------------         0
+Lua Precompiled Java------------------------         0
+Lua Precompiled Java With Compiler----------         0
+Lua Precompiled with Functions--------------         0
+Lua Precompiled with Functions with Compiler         0
+Commons Config XML--------------------------         1
+Commons Config Properties-------------------         2
+Lua Precompiled Bytecode--------------------        10
+Running config.SpeedTest
+11:55:19.696 [main] INFO  config.SpeedTest - Configuration Init Time
+Lua Precompiled Java------------------------         0
+Lua Precompiled Java With Compiler----------         0
+Lua Precompiled with Functions--------------         0
+Lua Precompiled with Functions with Compiler         0
+Lua Compile Java----------------------------         2
+Commons Config System-----------------------         3
+Lua Compile Java with Functions-------------         4
+Lua Precompiled Bytecode--------------------         4
+Java Properties-----------------------------         5
+Lua Interpret with Functions----------------        16
+Commons Config XML--------------------------        67
+Commons Config Properties-------------------        80
+Lua Interpret-------------------------------       485
+11:55:19.706 [main] INFO  config.SpeedTest - Compute Time (reps 100)
+Java Properties-----------------------------         0
+Lua Precompiled Bytecode--------------------         0
+Lua Precompiled Java------------------------         0
+Lua Precompiled Java With Compiler----------         0
+Lua Precompiled with Functions--------------         0
+Lua Compile Java----------------------------         1
+Lua Compile Java with Functions-------------         1
+Commons Config System-----------------------         2
+Commons Config Properties-------------------         5
+Lua Precompiled with Functions with Compiler         8
+Lua Interpret with Functions----------------         9
+Commons Config XML--------------------------        13
+Lua Interpret-------------------------------        13
+Running config.SpeedTest
+11:55:31.650 [main] INFO  config.SpeedTest - Configuration Init Time
+Lua Precompiled Java------------------------         0
+Lua Precompiled Java With Compiler----------         0
+Lua Precompiled with Functions--------------         0
+Lua Precompiled with Functions with Compiler         0
+Lua Compile Java----------------------------         2
+Commons Config System-----------------------         3
+Java Properties-----------------------------         3
+Lua Compile Java with Functions-------------         4
+Lua Precompiled Bytecode--------------------        13
+Lua Interpret with Functions----------------        25
+Commons Config XML--------------------------        69
+Commons Config Properties-------------------       113
+Lua Interpret-------------------------------       490
+11:55:31.661 [main] INFO  config.SpeedTest - Compute Time (reps 1000)
+Java Properties-----------------------------         1
+Lua Compile Java----------------------------         1
+Lua Compile Java with Functions-------------         1
+Lua Precompiled Bytecode--------------------         2
+Lua Precompiled Java With Compiler----------         2
+Lua Precompiled with Functions--------------         2
+Lua Precompiled with Functions with Compiler         2
+Lua Precompiled Java------------------------         5
+Commons Config System-----------------------        10
+Lua Interpret with Functions----------------        16
+Lua Interpret-------------------------------        44
+Commons Config Properties-------------------        62
+Commons Config XML--------------------------        99
+Running config.SpeedTest
+11:55:45.021 [main] INFO  config.SpeedTest - Configuration Init Time
+Lua Precompiled Java------------------------         0
+Lua Precompiled Java With Compiler----------         0
+Lua Precompiled with Functions--------------         0
+Lua Precompiled with Functions with Compiler         0
+Lua Compile Java----------------------------         2
+Java Properties-----------------------------         3
+Lua Precompiled Bytecode--------------------         3
+Commons Config System-----------------------        13
+Lua Compile Java with Functions-------------        17
+Lua Interpret with Functions----------------        26
+Commons Config XML--------------------------        58
+Commons Config Properties-------------------        81
+Lua Interpret-------------------------------       515
+11:55:45.039 [main] INFO  config.SpeedTest - Compute Time (reps 10000)
+Java Properties-----------------------------        13
+Lua Compile Java----------------------------        13
+Lua Precompiled with Functions with Compiler        13
+Lua Precompiled Java With Compiler----------        14
+Lua Precompiled Java------------------------        15
+Lua Precompiled with Functions--------------        15
+Lua Precompiled Bytecode--------------------        21
+Lua Compile Java with Functions-------------        26
+Commons Config System-----------------------        36
+Lua Interpret with Functions----------------        40
+Lua Interpret-------------------------------        77
+Commons Config Properties-------------------       151
+Commons Config XML--------------------------      1699
