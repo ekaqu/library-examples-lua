@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>config-langs</groupId>
+    <artifactId>config-langs</artifactId>
+    <version>1.0</version>
+
+  <dependencies>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>12.0.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>luaj</groupId>
+      <artifactId>luaj-jse</artifactId>
+      <version>2.0.2</version>
+    </dependency>
+
+    <!-- To compile LUA to Java -->
+    <dependency>
+      <groupId>org.apache.bcel</groupId>
+      <artifactId>bcel</artifactId>
+      <version>5.2</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-configuration</groupId>
+      <artifactId>commons-configuration</artifactId>
+      <version>1.6</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>5.14.10</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.12</version>
+        <configuration>
+          <systemPropertyVariables>
+            <foo>bar</foo>
+          </systemPropertyVariables>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2.1</version>
+        <executions>
+          <execution>
+            <phase>generate-test-resources</phase>
+            <goals>
+              <goal>java</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <mainClass>luajc</mainClass>
+          <arguments>
+            <argument>-s</argument>
+            <argument>src/test/resources/</argument>
+            <argument>-d</argument>
+            <argument>target/test-classes</argument>
+            <argument>simple.lua</argument>
+            <argument>WithFunctions.lua</argument>
+          </arguments>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+    
+</project>

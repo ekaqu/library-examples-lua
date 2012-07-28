@@ -1,0 +1,12 @@
+A set of tests that show how to work with LuaJ.  Also added is a very simple performance compairison between LuaJ as a config laguage and other java based configuration libraries (Java Properties, Apache Commons Configuration)
+
+SPOILER:
+
+
+
+
+
+
+
+
+Lua comes out better than Apache Commons Configuration!

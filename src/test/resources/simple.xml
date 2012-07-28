@@ -1,0 +1,6 @@
+<conf>
+  <foo>bar</foo>
+  <t>
+    <bar>table.bar</bar>
+  </t>
+</conf>
