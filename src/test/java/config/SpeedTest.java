@@ -26,14 +26,15 @@ import static com.google.common.base.Strings.padStart;
 
 public class SpeedTest {
   private static final Logger LOGGER = LoggerFactory.getLogger(SpeedTest.class.getName());
-  private static final int REPS = 1000;
+  private static final int REPS = Integer.parseInt(System.getProperty("reps", "1000"));
+  private static final TimeUnit unit = TimeUnit.valueOf(System.getProperty("unit", TimeUnit.MILLISECONDS.toString()));
   
   private final Map<String, Long> initTimes = Maps.newTreeMap();
   private final Map<String, Long> computeTimes = Maps.newTreeMap();
 
   @Test(dataProvider = "run")
   public void run(Configuration conf, Object resource, String type, int rep) {
-    TimeUnit unit = TimeUnit.MILLISECONDS;
+
     Stopwatch configStopwatch = new Stopwatch().start();
     if(resource instanceof String) {
       conf.addResource((String) resource);
@@ -80,7 +81,7 @@ public class SpeedTest {
     LOGGER.info(sb.toString());
     
     ImmutableList<String> computeOrdered = Ordering.natural().onResultOf(Functions.forMap(computeTimes)).immutableSortedCopy(computeTimes.keySet());
-    sb = new StringBuilder("Compute Time\n");
+    sb = new StringBuilder("Compute Time (reps ").append(REPS).append(")\n");
     for(String key : computeOrdered) {
       sb.append(padEnd(key, maxSize, '-')).append(padStart(Long.toString(computeTimes.get(key)), 10, ' ')).append("\n");
     }
